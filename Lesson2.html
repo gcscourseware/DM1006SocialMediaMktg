@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LU2: Platforms & Audience Behaviour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfd;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .platform-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .choice-btn.selected {
+            border-color: #6366f1;
+            background-color: #eef2ff;
+            color: #4338ca;
+        }
+
+        .choice-btn.correct {
+            border-color: #10b981;
+            background-color: #ecfdf5;
+            color: #047857;
+        }
+
+        .choice-btn.wrong {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Header -->
+    <header class="gradient-header text-white py-12 px-6 shadow-xl">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-extrabold mb-3">LU2: Social Media Platforms</h1>
+            <p class="text-indigo-100 text-lg opacity-90">Decoding platform DNA and audience psychology.</p>
+        </div>
+    </header>
+
+    <!-- Navigation/Progress Tracker -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between mb-2">
+                <span id="current-step-label" class="text-xs font-bold uppercase tracking-wider text-slate-500">Learning Objectives</span>
+                <span id="step-counter" class="text-xs font-bold text-indigo-600">1 / 5</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                <div id="progress-bar" class="bg-indigo-600 h-full transition-all duration-500" style="width: 20%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-12 px-6">
+        
+        <!-- Step 1: Learning Objectives -->
+        <section id="step-1" class="step-content active">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <h2 class="text-2xl font-bold mb-6 text-slate-800">Learning Objectives</h2>
+                <div class="grid gap-6">
+                    <div class="flex items-start gap-4 p-5 rounded-2xl bg-indigo-50 border border-indigo-100">
+                        <div class="bg-indigo-600 text-white p-3 rounded-xl shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-indigo-900">Platform Characteristics</h3>
+                            <p class="text-indigo-700/80 text-sm">Understand the unique DNA, algorithms, and content cultures of major social networks.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-5 rounded-2xl bg-violet-50 border border-violet-100">
+                        <div class="bg-violet-600 text-white p-3 rounded-xl shadow-md">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-violet-900">Identify Target Audiences</h3>
+                            <p class="text-violet-700/80 text-sm">Learn to match specific business goals to the platforms where your target demographics live.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="nextStep()" class="mt-10 w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-slate-800 transition-all shadow-lg hover:shadow-indigo-200">Begin Lesson</button>
+            </div>
+        </section>
+
+        <!-- Step 2: Demographics & Behaviour -->
+        <section id="step-2" class="step-content">
+            <h2 class="text-2xl font-bold mb-4">Platform Demographics & User Behaviour</h2>
+            <p class="text-slate-500 mb-8">Each platform acts as a different "ecosystem." Click a card to explore its demographic profile.</p>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div onclick="showDemographic('ig')" class="platform-card cursor-pointer bg-white p-6 rounded-3xl border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">📸</span>
+                        <h3 class="font-bold text-lg">Instagram</h3>
+                    </div>
+                    <p class="text-sm text-slate-500">Visual discovery & aesthetic inspiration.</p>
+                </div>
+                <div onclick="showDemographic('tt')" class="platform-card cursor-pointer bg-white p-6 rounded-3xl border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🎵</span>
+                        <h3 class="font-bold text-lg">TikTok</h3>
+                    </div>
+                    <p class="text-sm text-slate-500">Short-form entertainment & raw authenticity.</p>
+                </div>
+                <div onclick="showDemographic('li')" class="platform-card cursor-pointer bg-white p-6 rounded-3xl border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">💼</span>
+                        <h3 class="font-bold text-lg">LinkedIn</h3>
+                    </div>
+                    <p class="text-sm text-slate-500">Professional networking & career value.</p>
+                </div>
+                <div onclick="showDemographic('fb')" class="platform-card cursor-pointer bg-white p-6 rounded-3xl border border-slate-200">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">👥</span>
+                        <h3 class="font-bold text-lg">Facebook</h3>
+                    </div>
+                    <p class="text-sm text-slate-500">Community connection & family updates.</p>
+                </div>
+            </div>
+
+            <!-- Demographic Detail View -->
+            <div id="demo-detail" class="mt-8 hidden p-8 rounded-3xl bg-indigo-900 text-white shadow-xl">
+                <div class="flex justify-between items-start mb-6">
+                    <h3 id="demo-name" class="text-2xl font-bold">Platform</h3>
+                    <button onclick="hideDemographic()" class="text-white/50 hover:text-white">✕</button>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <span class="text-indigo-300 text-xs font-bold uppercase tracking-widest block mb-2">Age Group</span>
+                        <p id="demo-age" class="text-lg font-semibold"></p>
+                    </div>
+                    <div>
+                        <span class="text-indigo-300 text-xs font-bold uppercase tracking-widest block mb-2">User Mindset</span>
+                        <p id="demo-mind" class="text-lg font-semibold italic"></p>
+                    </div>
+                </div>
+                <div class="mt-6 pt-6 border-t border-white/10">
+                    <span class="text-indigo-300 text-xs font-bold uppercase tracking-widest block mb-2">Marketing Tip</span>
+                    <p id="demo-tip" class="text-sm opacity-90"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: B2C vs B2B -->
+        <section id="step-3" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">B2C vs. B2B Social Media Usage</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-10">
+                <div class="bg-rose-50 p-6 rounded-3xl border border-rose-100">
+                    <h3 class="text-xl font-bold text-rose-700 mb-3">B2C (Consumer)</h3>
+                    <p class="text-sm text-rose-800/70 mb-4 font-medium uppercase tracking-tighter">Emotion & Quick Decisions</p>
+                    <ul class="text-sm text-rose-900 space-y-2">
+                        <li>• Visual-heavy storytelling</li>
+                        <li>• Shorter buying cycles</li>
+                        <li>• Influencer collaborations</li>
+                        <li>• High engagement on trends</li>
+                    </ul>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-3xl border border-blue-100">
+                    <h3 class="text-xl font-bold text-blue-700 mb-3">B2B (Business)</h3>
+                    <p class="text-sm text-blue-800/70 mb-4 font-medium uppercase tracking-tighter">Logic & Long-term Value</p>
+                    <ul class="text-sm text-blue-900 space-y-2">
+                        <li>• Information-heavy value</li>
+                        <li>• Longer sales cycles (Trust-based)</li>
+                        <li>• Thought leadership posts</li>
+                        <li>• High focus on ROI & Education</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-2xl">
+                <p class="text-indigo-300 font-bold uppercase text-xs mb-2">Check Your Knowledge</p>
+                <p class="mb-6 font-semibold">An accounting software firm wants to target CFOs for a new enterprise tool. Which strategy is most effective?</p>
+                <div class="space-y-3">
+                    <button onclick="checkQuiz(this, false)" class="quiz-opt w-full text-left p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">A. A trendy TikTok dance video featuring accountants</button>
+                    <button onclick="checkQuiz(this, true)" class="quiz-opt w-full text-left p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">B. A LinkedIn whitepaper on tax efficiency for large firms</button>
+                    <button onclick="checkQuiz(this, false)" class="quiz-opt w-full text-left p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition">C. An Instagram filter that makes you look like a CEO</button>
+                </div>
+                <p id="quiz-feedback" class="mt-4 text-sm font-medium hidden"></p>
+            </div>
+        </section>
+
+        <!-- Step 4: Platform Comparison Worksheet -->
+        <section id="step-4" class="step-content">
+            <h2 class="text-2xl font-bold mb-4">Activity: Platform Comparison Worksheet</h2>
+            <p class="text-slate-500 mb-8">Match the business goal to the most appropriate platform. Dragging/selecting logic below:</p>
+            
+            <div id="worksheet" class="space-y-6">
+                <div class="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <p class="font-bold text-lg">Goal 1: Launch a trendy streetwear brand targeting Gen Z.</p>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-bold tracking-widest">Target Audience: High energy / Visual / Trends</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="matchGoal(1, 'LI', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">LinkedIn</button>
+                        <button onclick="matchGoal(1, 'TT', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">TikTok</button>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <p class="font-bold text-lg">Goal 2: Connect with Human Resource Managers for B2B hiring tools.</p>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-bold tracking-widest">Target Audience: Professional / Network-focused</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="matchGoal(2, 'LI', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">LinkedIn</button>
+                        <button onclick="matchGoal(2, 'TT', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">TikTok</button>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-white rounded-3xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-6 items-center">
+                    <div class="flex-1">
+                        <p class="font-bold text-lg">Goal 3: Building a hyper-local neighborhood gardening club.</p>
+                        <p class="text-xs text-slate-400 mt-1 uppercase font-bold tracking-widest">Target Audience: Communities / Locals / Older demographics</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="matchGoal(3, 'IG', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">Instagram</button>
+                        <button onclick="matchGoal(3, 'FB', this)" class="px-4 py-2 text-xs font-bold border-2 rounded-xl transition hover:border-slate-400">Facebook</button>
+                    </div>
+                </div>
+            </div>
+            <div id="worksheet-feedback" class="mt-8 text-center hidden">
+                <span class="inline-block px-6 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-bold">All matches correct! You understand the platform DNA.</span>
+            </div>
+        </section>
+
+        <!-- Step 5: Persona Creation -->
+        <section id="step-5" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Activity: Audience Persona Creation</h2>
+            <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-50 rounded-bl-full -z-10 opacity-50"></div>
+                
+                <p class="text-slate-500 mb-8 font-medium italic">Complete the profile for your ideal customer below:</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">Persona Name</label>
+                            <input type="text" id="p-name" placeholder="e.g. Founder Felix" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">Primary Platform</label>
+                            <select id="p-plat" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                                <option>Instagram</option>
+                                <option>LinkedIn</option>
+                                <option>TikTok</option>
+                                <option>Facebook</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">Age Bracket</label>
+                            <input type="text" id="p-age" placeholder="e.g. 25 - 35" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">Daily Goal</label>
+                            <input type="text" id="p-goal" placeholder="e.g. Scaling their startup" class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8">
+                    <label class="block text-[10px] font-extrabold uppercase tracking-widest text-slate-400 mb-2">The Hook: Why would they follow you?</label>
+                    <textarea id="p-hook" rows="3" placeholder="Explain what unique value your business provides to this specific person..." class="w-full bg-slate-50 border border-slate-100 p-4 rounded-2xl outline-none focus:ring-2 focus:ring-indigo-500 transition"></textarea>
+                </div>
+
+                <button onclick="generatePersona()" class="mt-10 w-full py-5 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-700 transition transform hover:scale-[1.01]">Generate Strategic Summary</button>
+
+                <!-- Persona Output Card -->
+                <div id="persona-result" class="mt-10 p-8 rounded-3xl bg-slate-900 text-white hidden animate-pulse">
+                    <h4 class="text-indigo-400 font-bold uppercase text-[10px] tracking-widest mb-4">Strategy Assessment</h4>
+                    <p id="result-summary" class="leading-relaxed text-slate-300"></p>
+                    <button onclick="finishModule()" class="mt-6 w-full py-3 border border-white/20 rounded-xl hover:bg-white/10 transition font-bold text-sm">Download / Complete Module</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Navigation -->
+        <div class="mt-12 flex justify-between items-center" id="nav-btns">
+            <button id="prev-btn" onclick="prevStep()" class="hidden text-slate-400 font-bold hover:text-slate-900 transition flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+                Previous Step
+            </button>
+            <div class="flex-grow"></div>
+            <button id="next-btn" onclick="nextStep()" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-200 transition">Next Step</button>
+        </div>
+    </main>
+
+    <!-- Completion Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-900/90 backdrop-blur-sm z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white rounded-[2.5rem] p-10 max-w-md w-full text-center shadow-2xl scale-95 transition-transform duration-300" id="modal-box">
+            <div class="w-20 h-20 bg-indigo-100 text-indigo-600 rounded-3xl flex items-center justify-center text-3xl mx-auto mb-6">🎯</div>
+            <h2 class="text-3xl font-extrabold mb-3">Module 2 Complete!</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed">You've successfully decoded platform demographics and established your first strategic audience persona.</p>
+            <button onclick="location.reload()" class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all">Restart Lesson</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        const stepLabels = [
+            "Learning Objectives",
+            "Platform Demographics",
+            "B2B vs B2C Logic",
+            "Platform Worksheet",
+            "Persona Builder"
+        ];
+
+        const demographics = {
+            'ig': {
+                name: 'Instagram',
+                age: '18 - 34 years old',
+                mind: 'Aspirational & Visual',
+                tip: 'Focus on high-quality visuals and short video content (Reels). Use the link-in-bio effectively to drive traffic.'
+            },
+            'tt': {
+                name: 'TikTok',
+                age: '13 - 24 years old (Gen Z)',
+                mind: 'Raw & Entertaining',
+                tip: 'Ditch the professional edits. Authenticity and jumping on music trends within the first 3 seconds is key here.'
+            },
+            'li': {
+                name: 'LinkedIn',
+                age: '25 - 54 years old (Professionals)',
+                mind: 'Logic & Value-driven',
+                tip: 'Users want to learn. Post thought-leadership pieces, industry news, and long-form text posts that establish authority.'
+            },
+            'fb': {
+                name: 'Facebook',
+                age: '25 - 65+ (Broad spectrum)',
+                mind: 'Community & Trust',
+                tip: 'Great for local community building and "Groups." Family-oriented content and long-form storytelling perform best.'
+            }
+        };
+
+        const worksheetProgress = { 1: false, 2: false, 3: false };
+
+        function updateUI() {
+            // Update active section
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            // Update Header & Progress
+            document.getElementById('current-step-label').innerText = stepLabels[currentStep - 1];
+            document.getElementById('step-counter').innerText = `${currentStep} / ${totalSteps}`;
+            document.getElementById('progress-bar').style.width = `${(currentStep / totalSteps) * 100}%`;
+
+            // Update Navigation Buttons
+            document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 1);
+            document.getElementById('next-btn').classList.toggle('hidden', currentStep === totalSteps);
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function showDemographic(id) {
+            const data = demographics[id];
+            const detail = document.getElementById('demo-detail');
+            detail.classList.remove('hidden');
+            document.getElementById('demo-name').innerText = data.name;
+            document.getElementById('demo-age').innerText = data.age;
+            document.getElementById('demo-mind').innerText = data.mind;
+            document.getElementById('demo-tip').innerText = data.tip;
+            detail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function hideDemographic() {
+            document.getElementById('demo-detail').classList.add('hidden');
+        }
+
+        function checkQuiz(btn, isCorrect) {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.classList.remove('hidden');
+            
+            // Reset all buttons
+            document.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('correct', 'wrong'));
+            
+            if (isCorrect) {
+                btn.classList.add('correct');
+                feedback.innerText = "Correct! LinkedIn is a logic-driven environment where high-value educational content (Whitepapers) thrives for B2B decisions.";
+                feedback.className = "mt-4 text-sm font-bold text-emerald-400";
+            } else {
+                btn.classList.add('wrong');
+                feedback.innerText = "Not quite. While creative, those approaches are usually too 'fringe' or emotional for a CFO making a logical software purchase.";
+                feedback.className = "mt-4 text-sm font-bold text-rose-400";
+            }
+        }
+
+        function matchGoal(goalNum, platform, btn) {
+            const correctAnswers = { 1: 'TT', 2: 'LI', 3: 'FB' };
+            const parent = btn.parentElement;
+            
+            // Remove previous classes in this row
+            parent.querySelectorAll('button').forEach(b => b.classList.remove('correct', 'wrong'));
+
+            if (platform === correctAnswers[goalNum]) {
+                btn.classList.add('correct');
+                worksheetProgress[goalNum] = true;
+            } else {
+                btn.classList.add('wrong');
+                worksheetProgress[goalNum] = false;
+            }
+
+            if (Object.values(worksheetProgress).every(v => v)) {
+                document.getElementById('worksheet-feedback').classList.remove('hidden');
+            }
+        }
+
+        function generatePersona() {
+            const name = document.getElementById('p-name').value;
+            const plat = document.getElementById('p-plat').value;
+            const goal = document.getElementById('p-goal').value;
+            const hook = document.getElementById('p-hook').value;
+
+            if (!name || !goal || !hook) {
+                alert("Please fill in all persona fields to generate a strategy!");
+                return;
+            }
+
+            const result = document.getElementById('persona-result');
+            result.classList.remove('hidden');
+            
+            const summary = `Based on your profile, <strong>${name}</strong> is looking for high-value solutions on <strong>${plat}</strong>. To win them over, your content shouldn't just exist; it needs to solve their daily goal of <em>"${goal}"</em>. Because they use ${plat}, your strategy should focus on <strong>${plat === 'LinkedIn' ? 'Educational Authority' : 'Visual Engagement'}</strong>. Your hook: <em>"${hook}"</em> is the bridge between their needs and your expertise.`;
+            
+            document.getElementById('result-summary').innerHTML = summary;
+            result.classList.remove('animate-pulse');
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function finishModule() {
+            const modal = document.getElementById('modal');
+            const box = document.getElementById('modal-box');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => box.classList.remove('scale-95'), 10);
+        }
+    </script>
+</body>
+</html>
