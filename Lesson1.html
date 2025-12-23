@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1: Intro to Social Media Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .progress-bar {
+            transition: width 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8 px-6 shadow-lg">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold mb-2">Module 1: Introduction to Social Media Marketing</h1>
+            <p class="opacity-90">Building the foundation for your digital marketing journey.</p>
+        </div>
+    </header>
+
+    <!-- Progress Tracker -->
+    <div class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-4xl mx-auto py-4 px-6">
+            <div class="flex justify-between items-center mb-2 text-sm font-semibold text-slate-500">
+                <span id="step-title">Course Introduction</span>
+                <span id="step-progress-text">Step 1 of 5</span>
+            </div>
+            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                <div id="progress-bar" class="progress-bar h-full bg-indigo-600 w-1/5"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-4xl mx-auto py-10 px-6">
+        
+        <!-- Step 1: Learning Objectives -->
+        <section id="step-1" class="step-content active">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                <h2 class="text-2xl font-bold mb-6 text-indigo-900">Learning Objectives</h2>
+                <div class="grid gap-4">
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-indigo-50 border border-indigo-100">
+                        <div class="bg-indigo-600 text-white p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Define SMM</h3>
+                            <p class="text-slate-600">Understand what Social Media Marketing really is beyond just posting photos.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-purple-50 border border-purple-100">
+                        <div class="bg-purple-600 text-white p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">The Ecosystem</h3>
+                            <p class="text-slate-600">Explain the vital role of social media in the broader digital landscape.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-xl bg-pink-50 border border-pink-100">
+                        <div class="bg-pink-600 text-white p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">Platform Mastery</h3>
+                            <p class="text-slate-600">Identify and differentiate major platforms like TikTok, LinkedIn, and Meta.</p>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="nextStep()" class="mt-8 w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition">Start Lesson</button>
+            </div>
+        </section>
+
+        <!-- Step 2: What is SMM? -->
+        <section id="step-2" class="step-content">
+            <div class="space-y-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <h2 class="text-2xl font-bold mb-4">What is Social Media Marketing?</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        Social Media Marketing (SMM) is the process of creating content for social media platforms to promote your products and/or services, build community, and drive traffic to your business.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mt-8">
+                        <div class="p-6 bg-slate-50 rounded-xl border border-dashed border-slate-300">
+                            <h3 class="font-bold text-indigo-600 mb-2 uppercase text-sm">Traditional View</h3>
+                            <p class="text-sm">Broadcast a message to as many people as possible (One-way communication).</p>
+                        </div>
+                        <div class="p-6 bg-indigo-50 rounded-xl border border-indigo-200">
+                            <h3 class="font-bold text-indigo-700 mb-2 uppercase text-sm">Social Marketing View</h3>
+                            <p class="text-sm">Build relationships and engage in a dialogue with customers (Two-way communication).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-indigo-900 text-white p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-4">Interactive Challenge</h3>
+                    <p class="mb-4">Which of these is the primary differentiator of social media marketing compared to traditional billboard advertising?</p>
+                    <div class="space-y-3">
+                        <button onclick="checkAnswer(this, true)" class="w-full text-left p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 transition">Instant Interaction and Two-way Engagement</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 transition">The ability to use bright colors</button>
+                        <button onclick="checkAnswer(this, false)" class="w-full text-left p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 transition">Lowering the cost of graphic design</button>
+                    </div>
+                    <p id="feedback-2" class="mt-4 hidden font-semibold"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Organic vs Paid -->
+        <section id="step-3" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Organic vs. Paid Social Media</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-green-100 border-t-4 border-t-green-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-green-700">Organic Social</h3>
+                        <span class="px-2 py-1 bg-green-100 text-green-700 text-xs font-bold rounded">FREE</span>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2">✅ Building community</li>
+                        <li class="flex items-center gap-2">✅ Nurturing existing followers</li>
+                        <li class="flex items-center gap-2">✅ Establishing brand voice</li>
+                        <li class="flex items-center gap-2">✅ Slower, long-term growth</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-blue-100 border-t-4 border-t-blue-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold text-blue-700">Paid Social</h3>
+                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded">COSTS MONEY</span>
+                    </div>
+                    <ul class="space-y-3 text-slate-600">
+                        <li class="flex items-center gap-2">🚀 Targeting specific demographics</li>
+                        <li class="flex items-center gap-2">🚀 Lead generation & sales</li>
+                        <li class="flex items-center gap-2">🚀 Reaching new audiences</li>
+                        <li class="flex items-center gap-2">🚀 Instant visibility</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-slate-100 p-8 rounded-2xl">
+                <h3 class="font-bold mb-4">Scenario: You are launching a new eco-friendly sneaker brand.</h3>
+                <p class="mb-6 text-slate-600">You have 0 followers and want to get your first 100 sales this week. Which strategy should you prioritize?</p>
+                <div class="flex gap-4">
+                    <button onclick="selectStrategy('paid')" id="strat-paid" class="flex-1 py-4 bg-white border-2 border-slate-300 rounded-xl font-bold hover:border-indigo-500 transition">Paid Social</button>
+                    <button onclick="selectStrategy('organic')" id="strat-organic" class="flex-1 py-4 bg-white border-2 border-slate-300 rounded-xl font-bold hover:border-indigo-500 transition">Organic Social</button>
+                </div>
+                <div id="strategy-feedback" class="mt-4 hidden p-4 rounded-lg"></div>
+            </div>
+        </section>
+
+        <!-- Step 4: Platform Overview -->
+        <section id="step-4" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Major Platform Overview</h2>
+            <p class="mb-8 text-slate-600">Click a platform to see its primary demographic and core strength.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <button onclick="showPlatform('Facebook')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-blue-500 text-center">
+                    <div class="text-3xl mb-2">👥</div>
+                    <span class="font-bold">Facebook</span>
+                </button>
+                <button onclick="showPlatform('Instagram')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-pink-500 text-center">
+                    <div class="text-3xl mb-2">📸</div>
+                    <span class="font-bold">Instagram</span>
+                </button>
+                <button onclick="showPlatform('TikTok')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-black text-center">
+                    <div class="text-3xl mb-2">🎵</div>
+                    <span class="font-bold">TikTok</span>
+                </button>
+                <button onclick="showPlatform('LinkedIn')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-blue-700 text-center">
+                    <div class="text-3xl mb-2">💼</div>
+                    <span class="font-bold">LinkedIn</span>
+                </button>
+                <button onclick="showPlatform('X')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-slate-800 text-center">
+                    <div class="text-3xl mb-2">🐦</div>
+                    <span class="font-bold">X (Twitter)</span>
+                </button>
+                <button onclick="showPlatform('YouTube')" class="platform-card p-6 bg-white rounded-xl shadow-sm border hover:border-red-600 text-center">
+                    <div class="text-3xl mb-2">🎬</div>
+                    <span class="font-bold">YouTube</span>
+                </button>
+            </div>
+
+            <div id="platform-detail" class="mt-8 bg-indigo-50 p-8 rounded-2xl border border-indigo-100 hidden">
+                <h3 id="plat-name" class="text-2xl font-bold text-indigo-900 mb-2">Platform Name</h3>
+                <p id="plat-desc" class="text-slate-700"></p>
+                <div class="mt-4 grid grid-cols-2 gap-4">
+                    <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span class="block text-xs uppercase font-bold text-slate-400">Best For</span>
+                        <span id="plat-best" class="font-semibold"></span>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span class="block text-xs uppercase font-bold text-slate-400">Demographic</span>
+                        <span id="plat-demo" class="font-semibold"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 5: Case Study -->
+        <section id="step-5" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Case Study: Successful Campaigns</h2>
+            <div class="bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-200">
+                <div class="h-48 bg-slate-200 flex items-center justify-center text-slate-400 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1000');">
+                    <div class="bg-black/40 w-full h-full flex items-center justify-center">
+                        <span class="text-white font-bold text-2xl uppercase tracking-widest">Duolingo on TikTok</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-bold mb-4">The Strategy: "Unhinged" Marketing</h3>
+                    <p class="text-slate-600 mb-4">
+                        Duolingo moved away from educational posts and instead turned their mascot, Duo the Owl, into a TikTok personality. They focused on trends, humor, and "menacing" reminders to practice.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="p-4 bg-slate-50 rounded-lg text-center">
+                            <span class="block text-2xl font-bold text-indigo-600">6M+</span>
+                            <span class="text-xs text-slate-500 uppercase">Followers Gained</span>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-lg text-center">
+                            <span class="block text-2xl font-bold text-indigo-600">90%</span>
+                            <span class="text-xs text-slate-500 uppercase">Organic Reach</span>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 p-6 rounded-xl border border-amber-200">
+                        <h4 class="font-bold text-amber-800 mb-2 italic">Discussion Point</h4>
+                        <p class="text-amber-900 text-sm">Why does a brand behaving like a "person" (or a chaotic bird) work better on social media than a corporate tone?</p>
+                    </div>
+                    
+                    <button onclick="completeLesson()" class="mt-8 w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition shadow-indigo-200 shadow-lg">Complete Module 1</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-10 flex justify-between items-center" id="nav-controls">
+            <button id="prev-btn" onclick="prevStep()" class="px-6 py-2 text-slate-600 font-bold hidden hover:text-slate-900">← Back</button>
+            <div class="flex-grow"></div>
+            <button id="next-btn" onclick="nextStep()" class="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl shadow-lg hover:bg-indigo-700 transition">Next Step</button>
+        </div>
+
+    </main>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-900/80 hidden z-50 flex items-center justify-center p-6">
+        <div class="bg-white rounded-3xl p-10 max-w-md w-full text-center">
+            <div class="text-6xl mb-6">🏆</div>
+            <h2 class="text-3xl font-bold mb-2">Module Complete!</h2>
+            <p class="text-slate-600 mb-8">You've successfully completed the introduction to Social Media Marketing. You're ready for Module 2!</p>
+            <button onclick="location.reload()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl">Back to Start</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        const stepTitles = [
+            "Learning Objectives",
+            "Defining SMM",
+            "Organic vs Paid",
+            "Platforms Overview",
+            "Campaign Case Study"
+        ];
+
+        const platformData = {
+            'Facebook': {
+                desc: 'The world\'s largest social network, essential for community building and robust advertising.',
+                best: 'Local businesses & Community Groups',
+                demo: 'Age 25-65+ (Broadest demographic)'
+            },
+            'Instagram': {
+                desc: 'A visual-first platform focusing on high-quality photos, Stories, and Reels.',
+                best: 'Lifestyle, Fashion, & Visual Brands',
+                demo: 'Age 18-34'
+            },
+            'TikTok': {
+                desc: 'Short-form video platform driven by trends, music, and a high-discovery algorithm.',
+                best: 'Viral trends & Personality marketing',
+                demo: 'Age 13-24'
+            },
+            'LinkedIn': {
+                desc: 'Professional networking site for B2B (Business to Business) marketing and hiring.',
+                best: 'Thought leadership & Professional services',
+                demo: 'Professionals & B2B Decision Makers'
+            },
+            'X': {
+                desc: 'Real-time text-based platform for news, customer service, and trending conversations.',
+                best: 'Customer support & News updates',
+                demo: 'Age 25-45, Urban dwellers'
+            },
+            'YouTube': {
+                desc: 'Video sharing platform that functions like a search engine (the 2nd largest in the world).',
+                best: 'Educational content & Long-form video',
+                demo: 'All ages'
+            }
+        };
+
+        function updateUI() {
+            // Hide all steps
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            // Show current
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            // Update progress
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('step-progress-text').innerText = `Step ${currentStep} of ${totalSteps}`;
+            document.getElementById('step-title').innerText = stepTitles[currentStep - 1];
+
+            // Nav buttons visibility
+            document.getElementById('prev-btn').style.display = currentStep === 1 ? 'none' : 'block';
+            document.getElementById('next-btn').style.display = currentStep === totalSteps ? 'none' : 'block';
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() {
+            if (currentStep < totalSteps) {
+                currentStep++;
+                updateUI();
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                updateUI();
+            }
+        }
+
+        function checkAnswer(btn, isCorrect) {
+            const feedback = document.getElementById('feedback-2');
+            feedback.classList.remove('hidden');
+            
+            if (isCorrect) {
+                btn.style.backgroundColor = '#10b981';
+                feedback.innerText = "Correct! Interaction is what makes social media 'social'.";
+                feedback.className = "mt-4 font-semibold text-emerald-400";
+            } else {
+                btn.style.backgroundColor = '#ef4444';
+                feedback.innerText = "Not quite. While cost and color matter, 'Two-way Engagement' is the defining feature.";
+                feedback.className = "mt-4 font-semibold text-rose-400";
+            }
+        }
+
+        function selectStrategy(type) {
+            const feedback = document.getElementById('strategy-feedback');
+            const paidBtn = document.getElementById('strat-paid');
+            const orgBtn = document.getElementById('strat-organic');
+            
+            feedback.classList.remove('hidden');
+            
+            if (type === 'paid') {
+                paidBtn.classList.add('border-indigo-600', 'bg-indigo-50');
+                orgBtn.classList.remove('border-indigo-600', 'bg-indigo-50');
+                feedback.innerHTML = `<strong>Smart choice!</strong> For instant sales with 0 followers, Paid Social (ads) allows you to bypass the algorithm and reach customers immediately.`;
+                feedback.className = "mt-4 p-4 rounded-lg bg-indigo-100 text-indigo-800";
+            } else {
+                orgBtn.classList.add('border-indigo-600', 'bg-indigo-50');
+                paidBtn.classList.remove('border-indigo-600', 'bg-indigo-50');
+                feedback.innerHTML = `<strong>That's tough!</strong> Organic social takes time to build trust and followers. It might take months to get those first 100 sales without an ad budget.`;
+                feedback.className = "mt-4 p-4 rounded-lg bg-amber-100 text-amber-800";
+            }
+        }
+
+        function showPlatform(name) {
+            const data = platformData[name];
+            const detail = document.getElementById('platform-detail');
+            detail.classList.remove('hidden');
+            
+            document.getElementById('plat-name').innerText = name;
+            document.getElementById('plat-desc').innerText = data.desc;
+            document.getElementById('plat-best').innerText = data.best;
+            document.getElementById('plat-demo').innerText = data.demo;
+            
+            detail.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function completeLesson() {
+            document.getElementById('success-modal').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
