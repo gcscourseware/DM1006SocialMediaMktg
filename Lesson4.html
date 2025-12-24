@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LU4:Running Targeted Social Media Advertising</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .ad-gradient {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-active {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+
+        .metric-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Header -->
+    <header class="ad-gradient text-white py-16 px-6">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-8 md:mb-0">
+                <span class="bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">LU 4</span>
+                <h1 class="text-4xl md:text-5xl font-extrabold mt-4">LU4: Running Targeted Social Media Advertising Campaigns</h1>
+                <p class="text-slate-400 mt-4 text-lg max-w-xl">Master the art of paid reach, precision targeting, and ROI-driven campaign management.</p>
+            </div>
+            <div class="bg-white/5 p-6 rounded-3xl border border-white/10 backdrop-blur-sm">
+                <div class="flex gap-4 items-center">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center text-2xl">📈</div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Ad Spend Simulated</p>
+                        <p class="text-xl font-bold font-mono">$12,450.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
+            <div class="flex gap-1 md:gap-4 overflow-x-auto no-scrollbar">
+                <button onclick="goTo(1)" class="nav-link whitespace-nowrap text-sm font-bold px-3 py-2 rounded-lg transition-colors text-blue-600 bg-blue-50" id="nav-1">1. Intro</button>
+                <button onclick="goTo(2)" class="nav-link whitespace-nowrap text-sm font-bold px-3 py-2 rounded-lg transition-colors text-slate-500" id="nav-2">2. Strategy</button>
+                <button onclick="goTo(3)" class="nav-link whitespace-nowrap text-sm font-bold px-3 py-2 rounded-lg transition-colors text-slate-500" id="nav-3">3. Budgeting</button>
+                <button onclick="goTo(4)" class="nav-link whitespace-nowrap text-sm font-bold px-3 py-2 rounded-lg transition-colors text-slate-500" id="nav-4">4. Optimization</button>
+            </div>
+            <div class="hidden md:block w-32 bg-slate-100 h-2 rounded-full">
+                <div id="progress-bar" class="bg-blue-600 h-full transition-all duration-500 rounded-full" style="width: 25%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto py-12 px-6">
+
+        <!-- Topic 1: Introduction to Advertising -->
+        <section id="step-1" class="step-content active">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">Introduction to Paid Social</h2>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        While organic reach is declining, **Paid Advertising** allows brands to bypass the algorithm and guarantee their content appears in front of their ideal customers. 
+                    </p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white border rounded-xl shadow-sm">
+                            <h4 class="font-bold text-blue-600 flex items-center gap-2">🚀 Why Pay?</h4>
+                            <p class="text-xs text-slate-500 mt-1">Instant visibility, hyper-precise targeting, and measurable ROI that organic posts can't match.</p>
+                        </div>
+                        <div class="p-4 bg-white border rounded-xl shadow-sm">
+                            <h4 class="font-bold text-blue-600 flex items-center gap-2">📊 Platform Reach</h4>
+                            <p class="text-xs text-slate-500 mt-1">Meta (FB/IG) offers the best data; LinkedIn dominates B2B; TikTok owns Gen Z attention.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 text-white">
+                    <h3 class="text-center font-bold text-blue-400 mb-6 uppercase text-xs tracking-widest">Interactive Platform Matcher</h3>
+                    <p class="text-center text-sm mb-6">Match your business goal to the right platform:</p>
+                    <div class="space-y-3" id="matcher-container">
+                        <button onclick="matchGoal('b2b')" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-left hover:bg-white/10 transition">
+                            <p class="font-bold text-sm">Goal: Generate High-Ticket B2B Leads</p>
+                            <p id="b2b-result" class="text-xs text-slate-400 mt-1">Click to match...</p>
+                        </button>
+                        <button onclick="matchGoal('ecom')" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-left hover:bg-white/10 transition">
+                            <p class="font-bold text-sm">Goal: Sell Trendy Fashion/Lifestyle</p>
+                            <p id="ecom-result" class="text-xs text-slate-400 mt-1">Click to match...</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 2: Creating Effective Campaigns -->
+        <section id="step-2" class="step-content">
+            <h2 class="text-3xl font-bold mb-8">Creating Effective Ad Campaigns</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="p-6 bg-white border rounded-2xl">
+                    <span class="text-2xl mb-2 block">🎯</span>
+                    <h4 class="font-bold mb-2">1. Objectives</h4>
+                    <p class="text-xs text-slate-500">Choosing "Awareness," "Consideration," or "Conversion" tells the AI which users to target.</p>
+                </div>
+                <div class="p-6 bg-white border rounded-2xl">
+                    <span class="text-2xl mb-2 block">👥</span>
+                    <h4 class="font-bold mb-2">2. Targeting</h4>
+                    <p class="text-xs text-slate-500">Lookalike Audiences (people similar to customers) vs. Interest-based vs. Retargeting.</p>
+                </div>
+                <div class="p-6 bg-white border rounded-2xl">
+                    <span class="text-2xl mb-2 block">🎨</span>
+                    <h4 class="font-bold mb-2">3. Creative</h4>
+                    <p class="text-xs text-slate-500">Thumb-stopping visuals combined with direct, benefit-driven copy.</p>
+                </div>
+            </div>
+
+            <div class="bg-blue-600 rounded-3xl p-8 text-white overflow-hidden relative">
+                <h3 class="text-xl font-bold mb-6">Targeting Simulator</h3>
+                <div class="grid md:grid-cols-2 gap-8 relative z-10">
+                    <div>
+                        <label class="block text-xs font-bold uppercase mb-2">Targeting Method</label>
+                        <select id="target-select" class="w-full p-3 bg-white/10 border border-white/20 rounded-xl outline-none mb-4 text-sm" onchange="updateSim()">
+                            <option value="broad">Broad Interest (Coffee Lovers)</option>
+                            <option value="retarget">Retargeting (Website Visitors)</option>
+                            <option value="lookalike">1% Lookalike (Top Customers)</option>
+                        </select>
+                        <p id="target-desc" class="text-sm text-blue-100"></p>
+                    </div>
+                    <div class="flex items-center justify-center p-6 bg-white/10 rounded-2xl border border-white/20 text-center">
+                        <div>
+                            <p class="text-xs uppercase text-blue-300 mb-1">Estimated Conversion Rate</p>
+                            <p id="conv-rate" class="text-4xl font-black metric-glow">--%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 3: Placement and Budgeting -->
+        <section id="step-3" class="step-content">
+            <h2 class="text-3xl font-bold mb-8">Budgeting, Placement & Bidding</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-3">Choosing Placements</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 border rounded-xl">
+                                <p class="text-sm font-bold">Feeds</p>
+                                <p class="text-[10px] text-slate-500">High engagement, more copy space.</p>
+                            </div>
+                            <div class="p-4 bg-slate-50 border rounded-xl">
+                                <p class="text-sm font-bold">Stories</p>
+                                <p class="text-[10px] text-slate-500">Immersive, vertical, video-first.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-3">Bidding Strategies</h4>
+                        <p class="text-sm text-slate-600 mb-4">You aren't just buying space; you are participating in a **Real-Time Auction**.</p>
+                        <ul class="text-xs space-y-2">
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <strong>Lowest Cost:</strong> AI gets as many results as possible for your budget.</li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <strong>Cost Cap:</strong> You tell the AI the maximum you'll pay per result.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 border rounded-[2rem] shadow-sm">
+                    <h3 class="font-bold mb-4">Ad Budget Calculator</h3>
+                    <p class="text-xs text-slate-500 mb-6">Plan your spend based on desired outcomes.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-[10px] uppercase font-bold text-slate-400">Target Monthly Sales</label>
+                            <input type="number" id="calc-sales" value="50" class="w-full p-3 bg-slate-50 border rounded-xl mt-1 outline-none font-bold" oninput="calculateBudget()">
+                        </div>
+                        <div>
+                            <label class="text-[10px] uppercase font-bold text-slate-400">Cost Per Acquisition (CPA) Goal</label>
+                            <input type="number" id="calc-cpa" value="15" class="w-full p-3 bg-slate-50 border rounded-xl mt-1 outline-none font-bold" oninput="calculateBudget()">
+                        </div>
+                        <div class="pt-6 border-t mt-6">
+                            <p class="text-xs text-slate-500">Recommended Monthly Budget:</p>
+                            <p id="total-budget" class="text-3xl font-black text-blue-600 mt-2">$750.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Topic 4: Management and Optimization -->
+        <section id="step-4" class="step-content">
+            <h2 class="text-3xl font-bold mb-8">Campaign Optimization & A/B Testing</h2>
+            <div class="bg-slate-900 rounded-[2.5rem] p-10 text-white mb-12">
+                <div class="max-w-2xl">
+                    <h3 class="text-2xl font-bold mb-4">The Optimization Loop</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Successful advertisers never "set and forget." They use A/B testing (Split Testing) to let the market decide which ad is best.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-4">
+                            <div class="p-4 bg-white/5 border border-white/10 rounded-xl relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 p-2 bg-blue-500 text-[10px] font-bold">AD A</div>
+                                <h5 class="text-sm font-bold">Lifestyle Image</h5>
+                                <p class="text-xs text-slate-500 mt-2">Showing a person using the product in a park.</p>
+                                <p class="text-sm mt-4 font-mono text-blue-400">CTR: 1.2%</p>
+                            </div>
+                            <div class="p-4 bg-white/5 border border-white/10 rounded-xl relative overflow-hidden ring-2 ring-emerald-500">
+                                <div class="absolute top-0 right-0 p-2 bg-emerald-500 text-[10px] font-bold">AD B</div>
+                                <h5 class="text-sm font-bold">Product Close-up</h5>
+                                <p class="text-xs text-slate-500 mt-2">White background focusing on features.</p>
+                                <p class="text-sm mt-4 font-mono text-emerald-400">CTR: 2.8% (Winner)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="p-6 bg-blue-600/20 border border-blue-500/30 rounded-2xl">
+                                <h5 class="font-bold text-sm mb-2">Next Step: Pivot</h5>
+                                <p class="text-[11px] text-blue-200">Since Ad B won, we now allocate 80% of budget to close-ups and test new "Headline" variations for Ad B.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-8 bg-white border border-slate-200 rounded-3xl">
+                <h3 class="font-bold mb-4">Self-Assessment</h3>
+                <p class="text-sm text-slate-500 mb-6">If your ad has a high CTR (Click-Through Rate) but 0 sales, what should you fix first?</p>
+                <div class="flex flex-col md:flex-row gap-4">
+                    <button onclick="checkFinal(false)" class="flex-1 p-4 bg-slate-50 border rounded-xl text-xs font-bold hover:bg-slate-100">Make a better ad creative</button>
+                    <button onclick="checkFinal(true)" class="flex-1 p-4 bg-slate-50 border rounded-xl text-xs font-bold hover:bg-slate-100">Fix the website landing page</button>
+                    <button onclick="checkFinal(false)" class="flex-1 p-4 bg-slate-50 border rounded-xl text-xs font-bold hover:bg-slate-100">Increase the ad budget</button>
+                </div>
+                <p id="final-feedback" class="mt-6 text-sm font-bold hidden text-center"></p>
+            </div>
+
+            <button onclick="finishModule()" class="mt-12 w-full py-5 bg-blue-600 text-white font-extrabold rounded-2xl shadow-xl hover:bg-blue-700 transition">Complete Ads Module</button>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-16 flex justify-between items-center" id="nav-btns-footer">
+            <button id="prev-btn" onclick="prevStep()" class="hidden text-slate-400 font-bold hover:text-slate-900 transition">← Previous Section</button>
+            <div class="flex-grow"></div>
+            <button id="next-btn" onclick="nextStep()" class="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl shadow-lg hover:scale-105 transition">Continue →</button>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-xl z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white rounded-[3rem] p-12 max-w-lg w-full text-center">
+            <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mx-auto mb-8">🏆</div>
+            <h2 class="text-3xl font-black mb-4">Ad Strategy Certified!</h2>
+            <p class="text-slate-500 mb-10 leading-relaxed">You've mastered campaign setup, targeting logic, and the budgeting science required to scale digital brands effectively.</p>
+            <div class="flex gap-4">
+                <button onclick="location.reload()" class="flex-1 py-4 border-2 border-slate-200 text-slate-400 font-bold rounded-2xl">Review</button>
+                <button onclick="location.reload()" class="flex-1 py-4 bg-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30">Next Module</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+
+        function goTo(step) {
+            currentStep = step;
+            updateUI();
+        }
+
+        function updateUI() {
+            // Update Sections
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            
+            // Update Nav Links
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('text-blue-600', 'bg-blue-50');
+                l.classList.add('text-slate-500');
+            });
+            const activeNav = document.getElementById(`nav-${currentStep}`);
+            activeNav.classList.add('text-blue-600', 'bg-blue-50');
+            activeNav.classList.remove('text-slate-500');
+
+            // Progress Bar
+            document.getElementById('progress-bar').style.width = `${(currentStep/totalSteps)*100}%`;
+
+            // Footer Btns
+            document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 1);
+            document.getElementById('next-btn').classList.toggle('hidden', currentStep === totalSteps);
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() { if(currentStep < totalSteps) { currentStep++; updateUI(); } }
+        function prevStep() { if(currentStep > 1) { currentStep--; updateUI(); } }
+
+        function matchGoal(type) {
+            if(type === 'b2b') {
+                document.getElementById('b2b-result').innerText = "Correct! LinkedIn Ads. Best for job title & company size targeting.";
+                document.getElementById('b2b-result').classList.replace('text-slate-400', 'text-emerald-400');
+            } else {
+                document.getElementById('ecom-result').innerText = "Correct! TikTok/IG Ads. Visual, fast-paced, and influencer-led.";
+                document.getElementById('ecom-result').classList.replace('text-slate-400', 'text-emerald-400');
+            }
+        }
+
+        function updateSim() {
+            const val = document.getElementById('target-select').value;
+            const desc = document.getElementById('target-desc');
+            const rate = document.getElementById('conv-rate');
+            
+            if(val === 'broad') {
+                desc.innerText = "Reaching high volume but low intent. Good for brand awareness.";
+                rate.innerText = "0.8%";
+            } else if(val === 'retarget') {
+                desc.innerText = "Reminding people who almost bought. High intent, small audience.";
+                rate.innerText = "4.2%";
+            } else {
+                desc.innerText = "Finding 'Twins' of your best customers. Balanced scale and quality.";
+                rate.innerText = "2.5%";
+            }
+        }
+
+        function calculateBudget() {
+            const sales = document.getElementById('calc-sales').value;
+            const cpa = document.getElementById('calc-cpa').value;
+            const total = sales * cpa;
+            document.getElementById('total-budget').innerText = `$${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        }
+
+        function checkFinal(isCorrect) {
+            const f = document.getElementById('final-feedback');
+            f.classList.remove('hidden');
+            if(isCorrect) {
+                f.innerText = "Correct! High CTR means the ad works (people are clicking). If they don't buy, the problem is your price, website experience, or checkout flow.";
+                f.className = "mt-6 text-sm font-bold text-emerald-600 bg-emerald-50 p-4 rounded-xl";
+            } else {
+                f.innerText = "Incorrect. High CTR means people ARE interested in the ad. If they don't buy after clicking, you are likely losing them on the website.";
+                f.className = "mt-6 text-sm font-bold text-rose-600 bg-rose-50 p-4 rounded-xl";
+            }
+        }
+
+        function finishModule() {
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+        }
+
+        // Init
+        updateSim();
+    </script>
+</body>
+</html>

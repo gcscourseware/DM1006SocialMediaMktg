@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LU5: Measuring and Analysing Social Media Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .analytics-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .kpi-chip:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Header -->
+    <header class="analytics-gradient text-white py-12 px-6 shadow-2xl">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-end">
+            <div>
+                <span class="inline-block px-3 py-1 bg-indigo-500/20 text-indigo-300 rounded-md text-xs font-bold uppercase tracking-widest mb-4">LU 5</span>
+                <h1 class="text-4xl font-bold">Measuring and Analysing Social Media Performance</h1>
+                <p class="text-slate-400 mt-2">Transforming raw social data into actionable business intelligence.</p>
+            </div>
+            <div class="mt-6 md:mt-0 flex gap-4">
+                <div class="text-right">
+                    <p class="text-[10px] text-slate-500 uppercase font-bold">Accuracy Score</p>
+                    <p class="text-2xl font-mono text-indigo-400">98.2%</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex gap-2 md:gap-6 overflow-x-auto no-scrollbar">
+                <button onclick="showStep(1)" class="nav-tab px-4 py-2 text-sm font-bold border-b-2 border-indigo-600 text-indigo-600" id="tab-1">KPIs</button>
+                <button onclick="showStep(2)" class="nav-tab px-4 py-2 text-sm font-bold text-slate-400" id="tab-2">Tools</button>
+                <button onclick="showStep(3)" class="nav-tab px-4 py-2 text-sm font-bold text-slate-400" id="tab-3">Insights</button>
+                <button onclick="showStep(4)" class="nav-tab px-4 py-2 text-sm font-bold text-slate-400" id="tab-4">Reporting</button>
+            </div>
+            <div class="hidden sm:block text-xs font-bold text-slate-400 uppercase tracking-tighter" id="progress-text">Step 1 of 4</div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto py-10 px-6">
+
+        <!-- STEP 1: KPIs -->
+        <section id="step-1" class="step-content active">
+            <h2 class="text-2xl font-bold mb-6">Defining Your North Star: KPIs</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        Not all data is created equal. **Key Performance Indicators (KPIs)** are the metrics that actually correlate with your business objectives. We categorize them into the **Social Media Funnel**.
+                    </p>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-white rounded-xl border-l-4 border-blue-400 shadow-sm kpi-chip">
+                            <h4 class="font-bold text-sm">Awareness (Top Funnel)</h4>
+                            <p class="text-xs text-slate-500">Reach, Impressions, Share of Voice.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border-l-4 border-indigo-400 shadow-sm kpi-chip">
+                            <h4 class="font-bold text-sm">Engagement (Middle Funnel)</h4>
+                            <p class="text-xs text-slate-500">Likes, Comments, Shares, Save rate.</p>
+                        </div>
+                        <div class="p-4 bg-white rounded-xl border-l-4 border-emerald-400 shadow-sm kpi-chip">
+                            <h4 class="font-bold text-sm">Conversion (Bottom Funnel)</h4>
+                            <p class="text-xs text-slate-500">CTR, Conversion Rate, ROI/ROAS.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-indigo-900 rounded-3xl p-8 text-white">
+                    <h3 class="text-xs font-bold text-indigo-300 uppercase mb-6 tracking-widest text-center">KPI Priority Matcher</h3>
+                    <p class="text-sm text-center mb-6">A new startup wants to get their name known by as many people as possible. What should be their **Primary KPI**?</p>
+                    <div class="space-y-3">
+                        <button onclick="kpiMatch(false)" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-sm hover:bg-white/10 transition">Number of Sales</button>
+                        <button onclick="kpiMatch(true)" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-sm hover:bg-white/10 transition">Total Reach & Impressions</button>
+                        <button onclick="kpiMatch(false)" class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-sm hover:bg-white/10 transition">Average Comment Length</button>
+                    </div>
+                    <p id="kpi-feedback" class="mt-6 text-center text-sm font-medium hidden"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 2: Tools -->
+        <section id="step-2" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">The Analytics Stack</h2>
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-indigo-600 mb-2">Native Insights</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Built into FB, IG, and LinkedIn. Best for post-level data and demographic breakdowns.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-indigo-600 mb-2">Third-Party Tools</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Hootsuite, Sprout Social. Best for cross-platform comparison and sentiment analysis.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-indigo-600 mb-2">Web Attribution</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Google Analytics 4 (GA4). Essential for seeing what users do *after* they leave social media.</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 rounded-[2rem] p-8 text-white">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-4">Tool Integration Check</h3>
+                        <p class="text-sm text-slate-400">Where should you look to find out which social platform drives the most revenue on your website?</p>
+                        <div class="mt-6 flex flex-wrap gap-3">
+                            <button onclick="toolCheck('IG')" class="px-4 py-2 bg-white/10 rounded-lg text-xs hover:bg-white/20">Instagram Insights</button>
+                            <button onclick="toolCheck('GA')" class="px-4 py-2 bg-indigo-600 rounded-lg text-xs font-bold">Google Analytics</button>
+                            <button onclick="toolCheck('HT')" class="px-4 py-2 bg-white/10 rounded-lg text-xs hover:bg-white/20">Hootsuite</button>
+                        </div>
+                    </div>
+                    <div id="tool-msg" class="w-64 p-4 bg-white/5 border border-white/10 rounded-xl text-xs text-slate-300 italic text-center">
+                        Select a tool to see its primary use case.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 3: Interpreting Data -->
+        <section id="step-3" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Generating Actionable Insights</h2>
+            <p class="text-slate-600 mb-8">Data is just numbers; **Insights** are the "So What?" that drives strategy. You look for trends, patterns, and anomalies.</p>
+            
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h4 class="font-bold">Weekly Performance Trend</h4>
+                    <select id="dataFilter" onchange="updateChart()" class="text-xs p-2 bg-slate-50 border rounded-lg outline-none">
+                        <option value="all">Last 7 Days</option>
+                        <option value="weekend">Weekends Only</option>
+                    </select>
+                </div>
+                <div class="h-64">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-indigo-50 border border-indigo-100 rounded-2xl">
+                    <h5 class="font-bold text-indigo-900 text-sm mb-2">Identifying a Pattern</h5>
+                    <p class="text-xs text-indigo-700 leading-relaxed">"Every time we post a video on Tuesday at 6 PM, our engagement is 40% higher than average."</p>
+                </div>
+                <div class="p-6 bg-emerald-50 border border-emerald-100 rounded-2xl">
+                    <h5 class="font-bold text-emerald-900 text-sm mb-2">Actionable Insight</h5>
+                    <p class="text-xs text-emerald-700 leading-relaxed">"Shift our main campaign launches to Tuesday evenings and re-format static guides into short-form videos."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STEP 4: Reporting -->
+        <section id="step-4" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">Reporting and Presenting</h2>
+            <div class="bg-white border rounded-[2rem] overflow-hidden">
+                <div class="bg-slate-50 p-6 border-b flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-sm">Monthly Stakeholder Report</h4>
+                        <p class="text-[10px] text-slate-400">Reporting Period: Oct 2023</p>
+                    </div>
+                    <button class="px-4 py-2 bg-indigo-600 text-white text-xs font-bold rounded-lg">Export PDF</button>
+                </div>
+                <div class="p-8">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8 text-center">
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Total Conversion</p>
+                            <p class="text-xl font-bold text-indigo-600">1,240</p>
+                            <p class="text-[10px] text-emerald-500 font-bold">↑ 12% vs LY</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Engagement Rate</p>
+                            <p class="text-xl font-bold text-indigo-600">4.8%</p>
+                            <p class="text-[10px] text-rose-500 font-bold">↓ 2% vs LY</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="text-[10px] text-slate-400 font-bold uppercase">Ad Spend</p>
+                            <p class="text-xl font-bold text-indigo-600">$4,500</p>
+                            <p class="text-[10px] text-slate-400 font-bold">On Budget</p>
+                        </div>
+                    </div>
+
+                    <h5 class="font-bold text-sm mb-4">Executive Summary (Communication)</h5>
+                    <div class="p-4 bg-yellow-50 border border-yellow-100 rounded-xl text-xs leading-relaxed text-yellow-800">
+                        <strong>Key Takeaway:</strong> Our reach grew by 12% this month due to the viral 'How-To' series, however, conversion rate dipped slightly. <strong>Recommendation:</strong> Improve the landing page load speed to capture the increased mobile traffic.
+                    </div>
+                </div>
+            </div>
+
+            <button onclick="completeModule()" class="w-full mt-10 py-5 bg-indigo-600 text-white font-bold rounded-2xl shadow-xl hover:bg-indigo-700 transition transform hover:scale-[1.01]">Finish Course Module</button>
+        </section>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-12 flex justify-between items-center" id="nav-footer">
+            <button id="prevBtn" onclick="changeStep(-1)" class="invisible text-slate-400 font-bold hover:text-slate-900 transition text-sm">← Back</button>
+            <button id="nextBtn" onclick="changeStep(1)" class="px-8 py-3 bg-slate-900 text-white font-bold rounded-xl text-sm">Next Section →</button>
+        </div>
+
+    </main>
+
+    <!-- Final Modal -->
+    <div id="finalModal" class="fixed inset-0 bg-slate-900/95 backdrop-blur-xl z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white rounded-[3rem] p-12 max-w-lg w-full text-center">
+            <div class="text-6xl mb-6">📉</div>
+            <h2 class="text-3xl font-bold mb-4">Data Scientist Status!</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed">You've successfully completed Module 6. You can now track, analyze, and present social media performance with confidence.</p>
+            <div class="space-y-3">
+                <button onclick="location.reload()" class="w-full py-4 bg-indigo-600 text-white font-bold rounded-2xl">Restart Lesson</button>
+                <button onclick="location.reload()" class="w-full py-4 text-slate-400 font-bold rounded-2xl">Return to Course Map</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        let chartInstance = null;
+
+        function showStep(step) {
+            currentStep = step;
+            updateUI();
+        }
+
+        function changeStep(delta) {
+            currentStep += delta;
+            updateUI();
+        }
+
+        function updateUI() {
+            // Content
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            // Tabs
+            document.querySelectorAll('.nav-tab').forEach(t => {
+                t.classList.remove('border-indigo-600', 'text-indigo-600');
+                t.classList.add('text-slate-400');
+            });
+            document.getElementById(`tab-${currentStep}`).classList.add('border-indigo-600', 'text-indigo-600');
+            document.getElementById(`tab-${currentStep}`).classList.remove('text-slate-400');
+
+            // Progress
+            document.getElementById('progress-text').innerText = `Step ${currentStep} of 4`;
+            
+            // Footer Btns
+            document.getElementById('prevBtn').style.visibility = currentStep === 1 ? 'hidden' : 'visible';
+            document.getElementById('nextBtn').style.visibility = currentStep === 4 ? 'hidden' : 'visible';
+
+            if(currentStep === 3) initChart();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function kpiMatch(isCorrect) {
+            const f = document.getElementById('kpi-feedback');
+            f.classList.remove('hidden');
+            if(isCorrect) {
+                f.innerText = "Correct! Reach and Impressions measure how many people see your content, which is the definition of awareness.";
+                f.className = "mt-6 text-center text-sm font-bold text-emerald-400";
+            } else {
+                f.innerText = "Incorrect. While sales are good, they are a 'Bottom Funnel' goal. For a new startup, awareness (reach) comes first.";
+                f.className = "mt-6 text-center text-sm font-bold text-rose-400";
+            }
+        }
+
+        function toolCheck(type) {
+            const msg = document.getElementById('tool-msg');
+            if(type === 'IG') msg.innerText = "Instagram Insights: Best for checking who saved your latest Reel.";
+            if(type === 'GA') msg.innerText = "Google Analytics: The only way to track 'Social-to-Sale' attribution accurately.";
+            if(type === 'HT') msg.innerText = "Hootsuite: Perfect for generating one report that covers FB, X, and IG at once.";
+        }
+
+        function initChart() {
+            if(chartInstance) chartInstance.destroy();
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            const data = {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Engagement Rate %',
+                    data: [2.1, 4.8, 2.5, 3.0, 3.2, 5.5, 5.8],
+                    borderColor: '#6366f1',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, grid: { display: false } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        }
+
+        function updateChart() {
+            const val = document.getElementById('dataFilter').value;
+            if(val === 'weekend') {
+                chartInstance.data.datasets[0].data = [0, 0, 0, 0, 0, 5.5, 5.8];
+            } else {
+                chartInstance.data.datasets[0].data = [2.1, 4.8, 2.5, 3.0, 3.2, 5.5, 5.8];
+            }
+            chartInstance.update();
+        }
+
+        function completeModule() {
+            document.getElementById('finalModal').classList.remove('hidden');
+            document.getElementById('finalModal').classList.add('flex');
+        }
+    </script>
+</body>
+</html>

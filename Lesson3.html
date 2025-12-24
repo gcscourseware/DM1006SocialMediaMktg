@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LU3: Creating Engaging and Shareable Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .content-gradient {
+            background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .tool-card:hover {
+            border-color: #ec4899;
+            background-color: #fdf2f8;
+        }
+
+        .platform-dot {
+            height: 12px;
+            width: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .detail-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+
+    <!-- Header -->
+    <header class="content-gradient text-white py-12 px-6 shadow-xl">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-extrabold mb-3 text-white">LU3: Creating Engaging and Shareable Contents</h1>
+            <p class="text-pink-100 text-lg opacity-90">Advanced techniques for creating scroll-stopping digital assets.</p>
+        </div>
+    </header>
+
+    <!-- Progress -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between mb-2">
+                <span id="step-label" class="text-xs font-bold uppercase tracking-widest text-slate-400">Content Types</span>
+                <span id="step-index" class="text-xs font-bold text-pink-600">1 / 4</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2 rounded-full">
+                <div id="progress-bar" class="bg-pink-500 h-full transition-all duration-500" style="width: 25%;"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto py-12 px-6">
+        
+        <!-- Step 1: Content Types & Formats -->
+        <section id="step-1" class="step-content active">
+            <h2 class="text-2xl font-bold mb-6">1. Content Types and Formats</h2>
+            <p class="text-slate-600 mb-8">Success requires a balanced content mix. Each format serves a specific psychological need in the buyer's journey.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div onclick="showFormat('text')" class="detail-card cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">✍️</span>
+                        <h3 class="font-bold">Text & Image Posts</h3>
+                    </div>
+                    <p class="text-xs text-slate-500">The foundation of SEO and shareable static value.</p>
+                </div>
+                <div onclick="showFormat('video')" class="detail-card cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🎬</span>
+                        <h3 class="font-bold">Short-form Video</h3>
+                    </div>
+                    <p class="text-xs text-slate-500">The current king of algorithmic discovery (Reels, TikTok).</p>
+                </div>
+                <div onclick="showFormat('live')" class="detail-card cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">📡</span>
+                        <h3 class="font-bold">Live Streams</h3>
+                    </div>
+                    <p class="text-xs text-slate-500">Real-time interaction and community building.</p>
+                </div>
+                <div onclick="showFormat('stories')" class="detail-card cursor-pointer hover:shadow-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-2xl">🤳</span>
+                        <h3 class="font-bold">Ephemeral Stories</h3>
+                    </div>
+                    <p class="text-xs text-slate-500">Nurturing your current fans with casual updates.</p>
+                </div>
+            </div>
+
+            <div id="format-info" class="hidden p-8 rounded-3xl bg-white border border-pink-100 shadow-lg">
+                <h3 id="format-title" class="text-xl font-bold text-pink-600 mb-4">Format Details</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Core Benefit</span>
+                        <p id="format-benefit" class="text-sm text-slate-700 font-medium mt-1"></p>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Best Use Case</span>
+                        <p id="format-use" class="text-sm text-slate-700 font-medium mt-1"></p>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Key Metric</span>
+                        <p id="format-metric" class="text-sm text-slate-700 font-bold text-pink-500 mt-1"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Tools & Techniques -->
+        <section id="step-2" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">2. Content Creation Tools & Writing</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-10">
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-bold text-slate-800 mb-4">Visual Design Tools</h3>
+                        <div class="space-y-3">
+                            <div class="p-4 bg-white rounded-xl border border-slate-200">
+                                <p class="font-bold text-sm">Canva / Adobe Express</p>
+                                <p class="text-xs text-slate-500">Perfect for: Templates, Infographics, Carousel slides.</p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-slate-200">
+                                <p class="font-bold text-sm">Adobe Premiere / CapCut</p>
+                                <p class="text-xs text-slate-500">Perfect for: High-end edits vs. Quick trending mobile videos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 mb-4">Headline Anatomy</h3>
+                        <div class="p-5 bg-pink-50 rounded-2xl border border-pink-100">
+                            <p class="text-xs font-bold text-pink-700 mb-2 uppercase">The 4 U's of Headlines</p>
+                            <ul class="text-xs space-y-2 text-pink-900">
+                                <li>• <strong>Urgency:</strong> Why read this now?</li>
+                                <li>• <strong>Uniqueness:</strong> Is this a new perspective?</li>
+                                <li>• <strong>Ultra-specific:</strong> Numbers and concrete facts.</li>
+                                <li>• <strong>Usefulness:</strong> What is the benefit?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-8 rounded-3xl text-white">
+                    <h3 class="font-bold text-pink-400 text-xs uppercase tracking-widest mb-4 text-center">Interactive Headline Lab</h3>
+                    <p class="text-sm mb-6 text-slate-400">Transform a boring headline into a "Hook".</p>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-white/5 rounded-xl border border-white/10">
+                            <p class="text-[10px] text-slate-500 uppercase font-bold mb-1">Standard</p>
+                            <p class="text-sm">"Our new coffee is now available in the shop."</p>
+                        </div>
+                        <div class="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/30">
+                            <p class="text-[10px] text-emerald-400 uppercase font-bold mb-1">High-Performing (The Curiosity Gap)</p>
+                            <p class="text-sm">"The secret bean used by world-class baristas is finally here—but there are only 50 bags."</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <textarea id="hook-input" class="w-full p-4 bg-white/5 border border-white/20 rounded-xl focus:ring-2 focus:ring-pink-500 outline-none text-sm" rows="2" placeholder="Try your own..."></textarea>
+                        <button onclick="analyzeHook()" class="mt-4 w-full py-3 bg-pink-600 text-white rounded-xl text-sm font-bold hover:bg-pink-700 transition">Analyze My Hook</button>
+                        <p id="hook-feedback" class="mt-4 text-sm font-medium hidden text-center"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Curation & UGC -->
+        <section id="step-3" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">3. Curation and User-Generated Content</h2>
+            <p class="text-slate-600 mb-8">You don't need to create 100% of your content. Leveraging others builds community and saves resources.</p>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-violet-900 text-white p-8 rounded-3xl">
+                    <h3 class="text-violet-300 font-bold text-xs uppercase mb-4 tracking-widest">UGC Strategy</h3>
+                    <p class="text-sm leading-relaxed mb-6">Content made by users is <strong>2.4x more impactful</strong> than brand content.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-400">✔</span>
+                            <p class="text-xs">Create a unique hashtag for fans to use.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-400">✔</span>
+                            <p class="text-xs">Run monthly "Best Photo" contests with prizes.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-emerald-400">✔</span>
+                            <p class="text-xs">Always ask for permission before reposting.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl border border-slate-200">
+                    <h3 class="text-slate-400 font-bold text-xs uppercase mb-4 tracking-widest">Curation Best Practices</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="font-bold text-xs text-slate-800">The 5-3-2 Rule</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Out of 10 posts: 5 should be curated, 3 original education, 2 promotional.</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="font-bold text-xs text-slate-800">Add "Value-Added" Context</p>
+                            <p class="text-[11px] text-slate-500 mt-1">Don't just share a link. Tell your audience why this industry news matters to them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4: Scheduling & Timing -->
+        <section id="step-4" class="step-content">
+            <h2 class="text-2xl font-bold mb-6">4. Scheduling and Posting</h2>
+            
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 mb-8">
+                <h3 class="font-bold mb-6">The Science of Optimal Posting</h3>
+                <p class="text-sm text-slate-500 mb-8 leading-relaxed">Timing isn't just about the hour; it's about the **Mindset** of the user during that hour.</p>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center p-4">
+                        <p class="text-2xl mb-2">☕</p>
+                        <p class="font-bold text-sm">Morning Commute</p>
+                        <p class="text-[10px] text-slate-400">News, Motivation, Quick Tips</p>
+                    </div>
+                    <div class="text-center p-4 bg-pink-50 rounded-2xl border border-pink-100">
+                        <p class="text-2xl mb-2">🥗</p>
+                        <p class="font-bold text-sm">Lunch Break</p>
+                        <p class="text-[10px] text-pink-500">Entertainment, Short Videos</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <p class="text-2xl mb-2">🛋️</p>
+                        <p class="font-bold text-sm">Evening Wind-down</p>
+                        <p class="text-[10px] text-slate-400">Stories, Community Q&A</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 mb-8">
+                <div class="flex-1 bg-slate-900 text-white p-6 rounded-2xl">
+                    <h4 class="text-pink-400 font-bold text-xs uppercase mb-3">Scheduling Tools</h4>
+                    <ul class="text-xs space-y-3">
+                        <li class="flex justify-between"><span>Hootsuite / Buffer</span> <span class="text-slate-500">Full Dashboard</span></li>
+                        <li class="flex justify-between"><span>Later</span> <span class="text-slate-500">Visual focus (IG)</span></li>
+                        <li class="flex justify-between"><span>Sprout Social</span> <span class="text-slate-500">Enterprise Analytics</span></li>
+                    </ul>
+                </div>
+                <div class="flex-1 bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-sm mb-3">Consistency Check</h4>
+                    <p class="text-xs text-slate-500 mb-4">How many posts can you realistically maintain per week?</p>
+                    <select id="consist-check" onchange="evalConsistency(this)" class="w-full p-3 bg-slate-50 border rounded-lg text-xs outline-none">
+                        <option value="">Select frequency...</option>
+                        <option value="high">10+ Posts (High Intensity)</option>
+                        <option value="mid">3-5 Posts (Standard)</option>
+                        <option value="low">1 Post (Low Intensity)</option>
+                    </select>
+                    <p id="consist-feedback" class="mt-3 text-[10px] font-bold hidden"></p>
+                </div>
+            </div>
+
+            <button onclick="finishModule()" class="w-full py-5 bg-pink-600 text-white font-extrabold rounded-2xl shadow-xl hover:bg-pink-700 transition">Finalize LU3</button>
+        </section>
+
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center" id="nav-btns">
+            <button id="prev-btn" onclick="prevStep()" class="hidden text-slate-400 font-bold hover:text-slate-900 transition">← Back</button>
+            <div class="flex-grow"></div>
+            <button id="next-btn" onclick="nextStep()" class="px-8 py-3 bg-pink-600 text-white font-bold rounded-xl shadow-lg">Next Step</button>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-slate-900/90 backdrop-blur-md z-[100] hidden items-center justify-center p-6">
+        <div class="bg-white rounded-[2.5rem] p-10 max-w-md w-full text-center">
+            <div class="text-6xl mb-6">🎨</div>
+            <h2 class="text-3xl font-extrabold mb-3">Master Creator!</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed">You've unlocked the full strategy for creation, curation, and scheduling. You're ready to build a content engine.</p>
+            <button onclick="location.reload()" class="w-full py-4 bg-pink-600 text-white font-bold rounded-2xl">Restart Lesson</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 4;
+        const labels = ["Content Types", "Tools & Hooks", "Curation & UGC", "Scheduling"];
+
+        const formats = {
+            text: {
+                title: "Text & Image Posts",
+                benefit: "High shareability and information density.",
+                use: "Quick tips, quotes, and link sharing.",
+                metric: "Saves & Shares"
+            },
+            video: {
+                title: "Short-form Video (Reels/TikTok)",
+                benefit: "Viral potential and high algorithmic discovery.",
+                use: "Tutorials, entertainment, and visual storytelling.",
+                metric: "Watch Time"
+            },
+            live: {
+                title: "Live Streams",
+                benefit: "Unmatched trust and real-time community engagement.",
+                use: "Q&As, live launches, and interviews.",
+                metric: "Peak Live Viewers"
+            },
+            stories: {
+                title: "Ephemeral Stories",
+                benefit: "VIP intimacy; appears at the top of the feed.",
+                use: "Polls, behind-the-scenes, and daily updates.",
+                metric: "Sticker Taps"
+            }
+        };
+
+        function updateUI() {
+            document.querySelectorAll('.step-content').forEach(s => s.classList.remove('active'));
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+            document.getElementById('step-label').innerText = labels[currentStep-1];
+            document.getElementById('step-index').innerText = `${currentStep} / ${totalSteps}`;
+            document.getElementById('progress-bar').style.width = `${(currentStep/totalSteps)*100}%`;
+            document.getElementById('prev-btn').classList.toggle('hidden', currentStep === 1);
+            document.getElementById('next-btn').classList.toggle('hidden', currentStep === totalSteps);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function nextStep() { if(currentStep < totalSteps) { currentStep++; updateUI(); } }
+        function prevStep() { if(currentStep > 1) { currentStep--; updateUI(); } }
+
+        function showFormat(id) {
+            const info = document.getElementById('format-info');
+            info.classList.remove('hidden');
+            document.getElementById('format-title').innerText = formats[id].title;
+            document.getElementById('format-benefit').innerText = formats[id].benefit;
+            document.getElementById('format-use').innerText = formats[id].use;
+            document.getElementById('format-metric').innerText = formats[id].metric;
+            info.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function analyzeHook() {
+            const input = document.getElementById('hook-input').value;
+            const f = document.getElementById('hook-feedback');
+            f.classList.remove('hidden');
+            if(input.length < 15) {
+                f.innerText = "Too short! Add a specific benefit or an intriguing fact.";
+                f.className = "mt-4 text-sm font-bold text-orange-500";
+            } else if (input.match(/\d+/) && (input.includes("?") || input.toLowerCase().includes("how"))) {
+                f.innerText = "Excellent! Using numbers and 'How To' creates a high-performing 'Utility' hook.";
+                f.className = "mt-4 text-sm font-bold text-emerald-500";
+            } else {
+                f.innerText = "Decent. Try adding a 'Curiosity Gap' (e.g., 'The one mistake most people make...').";
+                f.className = "mt-4 text-sm font-bold text-blue-500";
+            }
+        }
+
+        function evalConsistency(el) {
+            const f = document.getElementById('consist-feedback');
+            f.classList.remove('hidden');
+            if(el.value === 'high') {
+                f.innerText = "Warning: High intensity often leads to burnout unless you have a full team.";
+                f.className = "mt-3 text-[10px] font-bold text-orange-500";
+            } else if(el.value === 'mid') {
+                f.innerText = "Recommended: This frequency is the 'sweet spot' for most brands to maintain growth.";
+                f.className = "mt-3 text-[10px] font-bold text-emerald-500";
+            } else {
+                f.innerText = "Note: Once a week might be too slow to build momentum in current algorithms.";
+                f.className = "mt-3 text-[10px] font-bold text-blue-500";
+            }
+        }
+
+        function finishModule() {
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
+        }
+    </script>
+</body>
+</html>
